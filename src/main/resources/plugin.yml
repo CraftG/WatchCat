@@ -1,0 +1,4 @@
+name: WatchCat
+main: xyz.hstudio.watchcat.WatchCat
+version: 1.0
+api-version: '1.16'

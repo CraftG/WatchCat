@@ -2,12 +2,14 @@ package xyz.hstudio.watchcat;
 
 import lombok.Getter;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import xyz.hstudio.watchcat.util.BlockUtil;
 
 import java.net.URLClassLoader;
 import java.util.Map;
@@ -27,15 +29,17 @@ public class WatchCat extends JavaPlugin {
             throw new IllegalStateException("Unsupported version!");
         }
 
+        BlockUtil.isSolid(Material.AIR);
+
         Bukkit.getPluginManager().registerEvents(new Listener() {
             @EventHandler
-            public void onJoin(PlayerJoinEvent e){
+            public void onJoin(PlayerJoinEvent e) {
                 Player shit = e.getPlayer();
                 cats.put(shit.getUniqueId(), new Cat(shit));
             }
 
             @EventHandler
-            public void onQuit(PlayerQuitEvent e){
+            public void onQuit(PlayerQuitEvent e) {
                 Player shit = e.getPlayer();
                 cats.remove(shit.getUniqueId());
             }
